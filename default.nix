@@ -7,14 +7,22 @@
 #     nix-build -A mypackage
 
 { pkgs ? import <nixpkgs> { } }:
-
+let
+in
 {
   # The `lib`, `modules`, and `overlay` names are special
   lib = import ./lib { inherit pkgs; }; # functions
   modules = import ./modules; # NixOS modules
   overlays = import ./overlays; # nixpkgs overlays
 
-  example-package = pkgs.callPackage ./pkgs/example-package { };
-  # some-qt5-package = pkgs.libsForQt5.callPackage ./pkgs/some-qt5-package { };
-  # ...
+  # python3Packages = pkgs.recurseIntoAttrs rec {
+  #   simplespectral = pkgs.callPackage ./pkgs/python-modules/simplespectral { };
+  #   simplesoapy = pkgs.callPackage ./pkgs/python-modules/simplesoapy { };
+  #   soapy_power = pkgs.callPackage ./pkgs/python-modules/soapy_power { inherit simplespectral simplesoapy; };
+  #   qtpy = pkgs.callPackage ./pkgs/python-modules/qtpy { };
+  #   types-pySide2 = pkgs.callPackage ./pkgs/python-modules/types-pySide2 { };
+  #   qspectrumanalyzer = pkgs.callPackage ./pkgs/qspectrumanalyzer { };
+  # };
+
+  rtl-gopow = pkgs.callPackage ./pkgs/rtl-gopow { };
 }
