@@ -19,6 +19,5 @@ buildGoModule rec {
     homepage = "https://github.com/dhogborg/rtl-gopow";
     description = "Render tables from rtl_power to a nice heat map";
     license = licenses.gpl3;
-    maintainers = with maintainers; [ badele ];
   };
 }
